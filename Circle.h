@@ -9,7 +9,7 @@
 
 class Circle : public Shape {
 public:
-    Circle(int id, string color, string fillmode, int x, int y, int radius);
+    Circle(int id, string name, string color, string fillmode, int x, int y, int radius);
     void draw(Canvas& canva) override;
     bool contains(int x,int y) override;
     // bool fits(int bwidth,int bheight) override;

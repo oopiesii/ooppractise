@@ -3,7 +3,7 @@
 //
 #include <cmath>
 #include "Circle.h"
-Circle::Circle(int id, string color, string fillmode, int centerx, int centery, int radius):Shape(id, color, fillmode, centerx, centery), radius(radius) {}
+Circle::Circle(int id, string name, string color, string fillmode, int centerx, int centery, int radius):Shape(id, name, color, fillmode, centerx, centery), radius(radius) {}
 void Circle::draw(Canvas& canva) {
     for (int i = -radius; i < radius; i++) {
         for (int j = -radius; j < radius; j++) {

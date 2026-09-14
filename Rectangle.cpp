@@ -4,7 +4,7 @@
 #include "Canvas.h"
 #include "Rectangle.h"
 
-Rectangle::Rectangle(int id, string color, string fillmode, int x, int y, int width, int height):Shape(id, color, fillmode, x, y), width(width), height(height) {}
+Rectangle::Rectangle(int id, string name, string color, string fillmode, int x, int y, int width, int height):Shape(id, name, color, fillmode, x, y), width(width), height(height) {}
 void Rectangle::draw(Canvas& canvas)
 {
     for (int i = 0; i < width; i++)

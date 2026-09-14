@@ -35,22 +35,22 @@ std::string Canvas::getColorAt(int x, int y) {
     return colors[x][y];
 }
 void Canvas::draw() {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            char ch = canvas[x][y];
-            if (ch != ' ') {
-                cout << getcolor(colors[x][y]) << ch << "\033[0m";
-            } else {
-                cout << ' ';
-            }
-        }
-        cout << endl;
-    }
+    // for (int y = 0; y < height; y++) {
+    //     for (int x = 0; x < width; x++) {
+    //         char ch = canvas[x][y];
+    //         if (ch != ' ') {
+    //             cout << getcolor(colors[x][y]) << ch << "\033[0m";
+    //         } else {
+    //             cout << ' ';
+    //         }
+    //     }
+    //     cout << endl;
+    // }
+    for
 }
 void Canvas::list() {
-    for (int i = 0; i < allfiguresoncanvas.size(); i++) {
-        cout << i + 1 << ". " << allfiguresoncanvas[i].first << " " << allfiguresoncanvas[i].second << endl;
-    };
+    for (int i = 0; i < shapes.size(); i++)
+        cout << i + 1 << ". "<< shapes[i]->getColor() << " " << shapes[i]->getName() << endl;
 }
 void Canvas::clear(Canvas canva) {
     for (int i = 0; i < canva.getwidth(); i++) {

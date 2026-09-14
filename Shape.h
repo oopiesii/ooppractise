@@ -13,7 +13,7 @@ using namespace std;
 class Canvas;
 class Shape {
     public:
-        Shape(int id, string color, string fillmode, int x, int y);
+        Shape(int id, string name, string color, string fillmode, int x, int y);
         virtual void draw(Canvas& canva) = 0;
         virtual bool contains(int x,int y) = 0;
         // virtual bool fits(int bwidth,int bheight) = 0;
@@ -22,14 +22,14 @@ class Shape {
         string getColor();
         void getCoo();
         int getId();
+        string getName();
         string getFillMode();
     protected:
         int id;
+        string name;
         string color_;
         string fillmode_;
         int x_;
         int y_;
 };
-
-
 #endif //ASSIGNMENT1_SHAPE_H

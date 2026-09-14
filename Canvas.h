@@ -13,13 +13,14 @@ class Canvas {
 public:
     Canvas();
     std::vector<std::vector<char>> canvas;
-    std::vector<std::pair<std::string, std::string>> allfiguresoncanvas;
+    // std::vector<std::pair<std::string, std::string>> allfiguresoncanvas;
     std::vector<std::vector<std::string>> colors;
     std::set<std::string> allcolors = {"red", "blue", "green", "yellow", "magenta", "cyan", "white"};
     std::set<std::string> allfigures = {"circle", "line", "triangle", "rectangle"};
     void setbycoo(int x, int y, char C, std::string color);
     std::string getcolor(std::string color);
     void draw();
+    void drawnew();
     void list();
     void clear(Canvas canvas);
     void save(Canvas canvas, std::string filename);

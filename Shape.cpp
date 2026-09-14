@@ -2,8 +2,8 @@
 #include <string>
 #include "Shape.h"
 
-Shape::Shape(int id, string color, string fillmode, int x, int y):
-    id(id), color_(color), fillmode_(fillmode), x_(x), y_(y){}
+Shape::Shape(int id, string name, string color, string fillmode, int x, int y):
+    id(id), name(name), color_(color), fillmode_(fillmode), x_(x), y_(y){}
 
 string Shape::getColor()
     {
@@ -19,4 +19,7 @@ string Shape::getFillMode()
 }
 int Shape::getId() {
     return id;
+}
+string Shape::getName() {
+    return name;
 }

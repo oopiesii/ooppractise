@@ -8,7 +8,7 @@
 
 class Line : public Shape{
     public:
-    Line(int id, string color, string fillmode, int x, int y, int length);
+    Line(int id, string name, string color, string fillmode, int x, int y, int length);
     void draw(Canvas& canva) override;
     bool contains(int x,int y) override;
     // bool fits(int bwidth,int bheight) override;
