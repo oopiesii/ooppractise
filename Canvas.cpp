@@ -6,8 +6,8 @@
 using namespace std;
 #include "Canvas.h"
 Canvas::Canvas() : width(120), height(30) {
-    canvas = vector<vector<char>>(width, vector<char>(height, ' '));
-    colors = vector<vector<string>>(width, vector<string>(height, ""));
+//     canvas = vector<vector<char>>(width, vector<char>(height, ' '));
+//     colors = vector<vector<string>>(width, vector<string>(height, ""));
 }
 std::string Canvas::getcolor(std::string colour) {
     if (colour == "red") return "\033[31m";
@@ -35,18 +35,22 @@ std::string Canvas::getColorAt(int x, int y) {
     return colors[x][y];
 }
 void Canvas::draw() {
-    // for (int y = 0; y < height; y++) {
-    //     for (int x = 0; x < width; x++) {
-    //         char ch = canvas[x][y];
-    //         if (ch != ' ') {
-    //             cout << getcolor(colors[x][y]) << ch << "\033[0m";
-    //         } else {
-    //             cout << ' ';
-    //         }
-    //     }
-    //     cout << endl;
-    // }
-    for
+    canvas.assign(width, vector<char>(height, ' '));
+    colors.assign(width, vector<string>(height, ""));
+    for (auto& shape : shapes) {
+        shape->draw(*this);
+    }
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            char ch = canvas[x][y];
+            if (ch != ' ') {
+                cout << getcolor(colors[x][y]) << ch << "\033[0m";
+            } else {
+                cout << ' ';
+            }
+        }
+        cout << endl;
+    }
 }
 void Canvas::list() {
     for (int i = 0; i < shapes.size(); i++)
@@ -59,6 +63,7 @@ void Canvas::clear(Canvas canva) {
             colors[i][j] = "";
         }
     }
+    vector<Shape*>().swap(shapes);
 }
 void Canvas::save(Canvas canva, std::string filename) {
     ofstream file(filename);
@@ -119,6 +124,7 @@ int Canvas::selectbycoo(int x, int y) {
     if (selected == -1) {
         cout << "There is no figures on that coordinates!" << endl;
     }
+    return selected;
 }
 int Canvas::selectbyid(int id) {
     for (int i = shapes.size() - 1; i >= 0; i--) { //because overlapping better to check from the end
@@ -130,6 +136,7 @@ int Canvas::selectbyid(int id) {
     if (selected == -1) {
         cout << "There is no figures on that coordinates!" << endl;
     }
+    return selected;
 }
 void Canvas::remove(int selectedid) {
     Shape* shape = shapes[selectedid];

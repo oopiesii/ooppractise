@@ -42,8 +42,6 @@ void Program::run() {
                 if (params[1] == "circle") {
                     if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for circle!");}
                     Circle* c = new Circle(canvas.shapes.size() + 1,"circle",params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    c->draw(canvas);
-                    // canvas.allfiguresoncanvas.push_back({params[2], params[1]});
                     canvas.shapes.push_back(c);
                     cout << "Figure successfully added!" << endl;
                     //add circle magenta fill 20 10 8 add rectangle red frame 23 16 5 6 add triangle blue fill 10 10 5
@@ -52,24 +50,18 @@ void Program::run() {
                 else if (params[1] == "line") {
                     if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for line!");}
                     Line* l = new Line(canvas.shapes.size() + 1,"line", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    l->draw(canvas);
-                    // canvas.allfiguresoncanvas.push_back({params[2], params[1]});
                     canvas.shapes.push_back(l);
                     cout << "Figure successfully added!" << endl;
                 }
                 else if (params[1] == "triangle") {
                     if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for triangle!");}
                     Triangle* t = new Triangle(canvas.shapes.size() + 1,"triangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    t->draw(canvas);
-                    // canvas.allfiguresoncanvas.push_back({params[2], params[1]});
                     canvas.shapes.push_back(t);
                     cout << "Figure successfully added!" << endl;
                 }
                 else if (params[1] == "rectangle") {
                     if (params.size() != 8) {throw std::runtime_error("Wrong number of parameters for rectangle!");}
                     Rectangle* r = new Rectangle(canvas.shapes.size() + 1, "rectangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]), stoi(params[7]));
-                    r->draw(canvas);
-                    // canvas.allfiguresoncanvas.push_back({params[2], params[1]});
                     canvas.shapes.push_back(r);
                     cout << "Figure successfully added!" << endl;
                 }

@@ -10,7 +10,6 @@ class Program {
     public:
     Program();
     void run();
-    void add();
 private:
     Canvas canvas;
 };
