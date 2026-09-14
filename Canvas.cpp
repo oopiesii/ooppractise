@@ -3,12 +3,16 @@
 //
 #include <fstream>
 #include <iostream>
+#include <sstream>
+
+#include "Circle.h"
+#include "Line.h"
+#include "Rectangle.h"
+#include "Triangle.h"
+
 using namespace std;
 #include "Canvas.h"
-Canvas::Canvas() : width(120), height(30) {
-//     canvas = vector<vector<char>>(width, vector<char>(height, ' '));
-//     colors = vector<vector<string>>(width, vector<string>(height, ""));
-}
+Canvas::Canvas() : width(120), height(30) {}
 std::string Canvas::getcolor(std::string colour) {
     if (colour == "red") return "\033[31m";
     else if (colour == "blue") return "\033[34m";
@@ -65,51 +69,53 @@ void Canvas::clear(Canvas canva) {
     }
     vector<Shape*>().swap(shapes);
 }
-void Canvas::save(Canvas canva, std::string filename) {
+void Canvas::save(std::string filename) {
     ofstream file(filename);
-    int i = 0;
     if (!file.is_open()) {
         cout << "Cannot be opened!" << endl;
         return;
     }
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            file << canvas[j][i];
-            if (canvas[j][i] != ' ') {
-                file << "|" << colors[j][i];
-            }
-            file << ";";
-        }
-        file << endl;
+    for (auto& shape: shapes) {
+        if (shape->getName() == "circle")
+            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getRadius() << endl;}
+        if (shape->getName() == "line")
+            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getLength() << endl;}
+        if (shape->getName() == "triangle")
+            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getHeight() << endl;}
+        if (shape->getName() == "rectangle")
+            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getWidth() << " " << shape->getHeight() << endl;}
     }
-    file.close();
     cout << "All saved!" << endl;
 }
-void Canvas::load(std::string filename) { ifstream file(filename);
+void Canvas::load(std::string filename) {
+    ifstream file(filename);
     if (!file.is_open()) {
         cout << "Cannot be opened!" << endl;
         return;
     }
-    canvas.assign(width, vector<char>(height, ' '));
-    colors.assign(width, vector<string>(height, ""));
     string line;
-    int y = 0;
-    while (getline(file, line) && y < height) {
-        int x = 0;
-        int pointer = 0;
-        while (pointer < line.size() && x < width) {
-            int end = line.find(';', pointer);
-            string cell = line.substr(pointer, end - pointer);
-            if (!cell.empty()) {
-                canvas[x][y] = cell[0];
-                if (cell.size() > 2 && cell[1] == '|') {
-                    colors[x][y] = cell.substr(2);
-                }
-            }
-            pointer = end + 1;
-            x++;
+    while (getline(file, line)) {
+        istringstream l(line);
+        int id, x, y;
+        string name, color, fillmode;
+        l >> id >> name >> color >> fillmode >> x >> y;
+        vector<int> pars;
+        int i;
+        while (l >> i) {
+            pars.push_back(i);
         }
-        y++;
+        if (name == "circle") {
+            shapes.push_back(new Circle(id, name, color, fillmode, x, y, pars[0]));
+        }
+        if (name == "line") {
+            shapes.push_back(new Line(id, name, color, fillmode, x, y, pars[0]));
+        }
+        if (name == "triangle") {
+            shapes.push_back(new Triangle(id, name, color, fillmode, x, y, pars[0]));
+        }
+        if (name == "rectangle") {
+            shapes.push_back(new Rectangle(id, name, color, fillmode, x, y, pars[0], pars[1]));
+        }
     }
     file.close();
     cout << "All loaded!" << endl;

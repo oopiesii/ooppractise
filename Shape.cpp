@@ -9,9 +9,13 @@ string Shape::getColor()
     {
         return color_;
     }
-void Shape::getCoo()
+int Shape::getX()
 {
-    cout << "X: " << x_ << ". Y: " << y_ << endl;
+    return x_;
+}
+int Shape::getY()
+{
+    return y_;
 }
 string Shape::getFillMode()
 {

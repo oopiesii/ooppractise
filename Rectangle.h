@@ -13,6 +13,10 @@ class Rectangle : public Shape{
         Rectangle(int id, string name, string color, string fillmode, int x, int y, int width, int height);
         void draw(Canvas& canvas) override;
         bool contains(int x,int y) override;
+        int getWidth() override;
+        int getHeight() override;
+        int getLength() override {return 0;};
+        int getRadius() override {return 0;};
         // bool fits(int bwidth,int bheight) override;
         // void move(int x1,int y1) override;
         // void paint(string color) override;

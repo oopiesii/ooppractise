@@ -16,11 +16,13 @@ class Shape {
         Shape(int id, string name, string color, string fillmode, int x, int y);
         virtual void draw(Canvas& canva) = 0;
         virtual bool contains(int x,int y) = 0;
-        // virtual bool fits(int bwidth,int bheight) = 0;
-        // virtual void move(int x1,int y1) = 0;
-        // virtual void paint(string color) = 0;
+        virtual int getHeight() = 0;
+        virtual int getWidth() = 0;
+        virtual int getLength() = 0;
+        virtual int getRadius() = 0;
         string getColor();
-        void getCoo();
+        int getX();
+        int getY();
         int getId();
         string getName();
         string getFillMode();

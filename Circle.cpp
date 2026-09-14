@@ -27,3 +27,6 @@ bool Circle::contains(int x, int y) {
     int ys = y - y_;
     return xs*xs + ys*ys < radius*radius; //checks the distance to the centre
 }
+int Circle::getRadius() {
+    return radius;
+}

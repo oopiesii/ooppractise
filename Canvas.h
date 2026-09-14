@@ -20,10 +20,9 @@ public:
     void setbycoo(int x, int y, char C, std::string color);
     std::string getcolor(std::string color);
     void draw();
-    void drawnew();
     void list();
     void clear(Canvas canvas);
-    void save(Canvas canvas, std::string filename);
+    void save(std::string filename);
     void load(std::string filename);
     int getwidth();
     int getheight();

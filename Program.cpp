@@ -92,7 +92,7 @@ void Program::run() {
                 cout << "Canva is clean!" << endl;
             }
             if (command == "save") {
-                canvas.save(canvas, params[1]);
+                canvas.save(params[1]);
             }
             if (command == "load") {
                 canvas.load(params[1]);

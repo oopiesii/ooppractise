@@ -14,6 +14,10 @@ class Line : public Shape{
     // bool fits(int bwidth,int bheight) override;
     // void move(int x1,int y1) override;
     // void paint(string color) override;
+    int getLength() override;
+    int getHeight() override {return 0;};
+    int getWidth() override {return 0;}
+    int getRadius() override {return 0;}
 private:
     int length;
 };

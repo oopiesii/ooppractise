@@ -19,3 +19,6 @@ void Line::draw(Canvas& canva)
 bool Line::contains(int x, int y) {
     return y == y_ && x == x_ && x < x_+length;
 }
+int Line::getLength() {
+    return length;
+}
