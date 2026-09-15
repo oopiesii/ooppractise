@@ -1,15 +1,10 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
 #include <fstream>
 #include <iostream>
 #include <sstream>
-
 #include "Circle.h"
 #include "Line.h"
 #include "Rectangle.h"
 #include "Triangle.h"
-
 using namespace std;
 #include "Canvas.h"
 Canvas::Canvas() : width(120), height(30) {}
@@ -164,4 +159,34 @@ void Canvas::move(int x, int y) {
 void Canvas::color(string color) {
     shapes[selected]->changecolor(color);
     cout << "Shape was colored!" << endl;
+}
+void Canvas::add(vector<string> params) {
+                if (!allfigures.contains(params[1])) {throw std::runtime_error("There is no such figure!");}
+                if (!allcolors.contains(params[2])) {throw std::runtime_error("There is no such color!");}
+                if (stoi(params[4]) > getwidth() || stoi(params[5]) > getheight())  {throw std::runtime_error("Wrong coordinates!");}
+                if (params[1] == "circle") {
+                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for circle!");}
+                    Circle* c = new Circle(shapes.size() + 1,"circle",params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
+                    shapes.push_back(c);
+                    cout << "Figure successfully added!" << endl;
+                }
+
+                else if (params[1] == "line") {
+                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for line!");}
+                    Line* l = new Line(shapes.size() + 1,"line", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
+                    shapes.push_back(l);
+                    cout << "Figure successfully added!" << endl;
+                }
+                else if (params[1] == "triangle") {
+                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for triangle!");}
+                    Triangle* t = new Triangle(shapes.size() + 1,"triangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
+                    shapes.push_back(t);
+                    cout << "Figure successfully added!" << endl;
+                }
+                else if (params[1] == "rectangle") {
+                    if (params.size() != 8) {throw std::runtime_error("Wrong number of parameters for rectangle!");}
+                    Rectangle* r = new Rectangle(shapes.size() + 1, "rectangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]), stoi(params[7]));
+                    shapes.push_back(r);
+                    cout << "Figure successfully added!" << endl;
+                }
 }

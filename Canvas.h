@@ -1,13 +1,7 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
-
 #ifndef ASSIGNMENT1_CANVAS_H
 #define ASSIGNMENT1_CANVAS_H
 #include <vector>
 #include <set>
-
-#include "Shape.h"
 class Shape;
 class Canvas {
 public:
@@ -34,6 +28,7 @@ public:
     int selected = -1;
     void move(int x, int y);
     void color(std::string color);
+    void add(std::vector<std::string>params);
 private:
     const int width = 120;
     const int height = 30;
