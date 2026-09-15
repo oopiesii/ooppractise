@@ -121,6 +121,7 @@ void Canvas::load(std::string filename) {
     cout << "All loaded!" << endl;
 }
 int Canvas::selectbycoo(int x, int y) {
+    selected = -1;
     for (int i = shapes.size() - 1; i >= 0; i--) { //because overlapping better to check from the end
         if ( shapes[i] -> contains(x, y) ) {
             selected = i;
@@ -133,6 +134,7 @@ int Canvas::selectbycoo(int x, int y) {
     return selected;
 }
 int Canvas::selectbyid(int id) {
+    selected = -1;
     for (int i = shapes.size() - 1; i >= 0; i--) { //because overlapping better to check from the end
         if ( shapes[i]->getId() == id ) {
             selected = i;
@@ -145,14 +147,13 @@ int Canvas::selectbyid(int id) {
     return selected;
 }
 void Canvas::remove(int selectedid) {
-    Shape* shape = shapes[selectedid];
-    for (int i = 0; i < width; i++) {
-        for (int j = 0; j < height; j++) {
-            if (shape -> contains(i, j)) {
-                canvas[i][j] = ' ';
-                colors[i][j] = "";
-            }
-        }
+    if (selectedid < 0 || selectedid >= shapes.size()) {
+        cout << "There is no figures on that coordinates!" << endl;
+        selected = -1;
+        return;
     }
+    delete shapes[selectedid];
+    shapes.erase(shapes.begin() + selectedid);
+    selected = -1;
     cout << "Shape was removed!" << endl;
 }

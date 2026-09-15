@@ -98,8 +98,17 @@ void Program::run() {
                 canvas.load(params[1]);
             }
             if (command == "select") {
-                if (params.size() == 3) {canvas.selectbycoo(stoi(params[1]), stoi(params[2]));}
-                if (params.size() == 2) {canvas.selectbyid(stoi(params[1]));}
+                if (params.size() == 2) {
+                    int result = canvas.selectbyid(stoi(params[1]));
+                    if (result != -1) {
+                        cout << "Figure is selected!" << endl;
+                    }
+                } else if (params.size() == 3) {
+                    int result = canvas.selectbycoo(stoi(params[1]), stoi(params[2]));
+                    if (result != -1) {
+                        cout << "Figure is selected!" << endl;
+                    }
+                }
             }
             if (command == "remove") {
                 canvas.remove(canvas.selected);

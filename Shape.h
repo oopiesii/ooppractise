@@ -14,6 +14,7 @@ class Canvas;
 class Shape {
     public:
         Shape(int id, string name, string color, string fillmode, int x, int y);
+        virtual ~Shape() = default;
         virtual void draw(Canvas& canva) = 0;
         virtual bool contains(int x,int y) = 0;
         virtual int getHeight() = 0;
