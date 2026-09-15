@@ -1,6 +1,3 @@
-//
-// Created by Polina Stupak on 08.09.2026.
-//
 #include "Shape.h"
 #include "Canvas.h"
 #include "Line.h"

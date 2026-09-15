@@ -1,7 +1,3 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
-
 #ifndef ASSIGNMENT1_RECTANGLE_H
 #define ASSIGNMENT1_RECTANGLE_H
 #include <__fwd/string.h>
@@ -17,9 +13,6 @@ class Rectangle : public Shape{
         int getHeight() override;
         int getLength() override {return 0;};
         int getRadius() override {return 0;};
-        // bool fits(int bwidth,int bheight) override;
-        // void move(int x1,int y1) override;
-        // void paint(string color) override;
     private:
         int width;
         int height;

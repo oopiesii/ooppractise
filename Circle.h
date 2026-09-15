@@ -1,11 +1,6 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
-
 #ifndef ASSIGNMENT1_CIRCLE_H
 #define ASSIGNMENT1_CIRCLE_H
 #include "Shape.h"
-
 
 class Circle : public Shape {
 public:

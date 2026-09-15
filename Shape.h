@@ -1,12 +1,6 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
-
 #ifndef ASSIGNMENT1_SHAPE_H
 #define ASSIGNMENT1_SHAPE_H
 #include <iostream>
-#include <sys/ioctl.h>
-#include <unistd.h>
 #include <string>
 #include "Canvas.h"
 using namespace std;

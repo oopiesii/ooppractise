@@ -1,9 +1,4 @@
-//
-// Created by Polina Stupak on 08.09.2026.
-//
-
 #include "Triangle.h"
-#include <cmath>
 Triangle::Triangle(int id, string name, string color, string fillmode, int x, int y, int height):Shape(id, name,color, fillmode, x, y), height(height) {}
 void Triangle::draw(Canvas& canva) {
     for (int i = 0; i < height + 1; i++) {

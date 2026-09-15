@@ -1,9 +1,5 @@
-//
-// Created by Polina Stupak on 07.09.2026.
-//
 #include "Canvas.h"
 #include "Rectangle.h"
-
 Rectangle::Rectangle(int id, string name, string color, string fillmode, int x, int y, int width, int height):Shape(id, name, color, fillmode, x, y), width(width), height(height) {}
 void Rectangle::draw(Canvas& canvas)
 {

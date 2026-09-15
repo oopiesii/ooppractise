@@ -1,7 +1,3 @@
-//
-// Created by Polina Stupak on 08.09.2026.
-//
-
 #ifndef ASSIGNMENT1_TRIANGLE_H
 #define ASSIGNMENT1_TRIANGLE_H
 #include "Shape.h"
@@ -15,8 +11,6 @@ public:
     int getWidth() override {return 0;};
     int getLength() override {return 0;};
     int getRadius() override {return 0;};
-    // void move(int x1,int y1) override;
-    // void paint(string color) override;
 private:
     int height;
 };

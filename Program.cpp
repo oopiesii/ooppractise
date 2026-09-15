@@ -1,19 +1,11 @@
-//
-// Created by Polina Stupak on 08.09.2026.
-//
 #include "Canvas.h"
 #include "Program.h"
-#include "Triangle.h"
-
 #include <vector>
-#include "Circle.h"
-#include "Line.h"
 #include <string>
 #include <iostream>
 #include <set>
 #include <ostream>
 #include <boost/algorithm/string.hpp>
-
 #include "Rectangle.h"
 using namespace std;
 Program::Program() : canvas() {}
@@ -36,35 +28,7 @@ void Program::run() {
         try {
             if (!commands.contains(command)) {throw std::runtime_error("There is no such command!");}
             if (command == "add") {
-                if (!canvas.allfigures.contains(params[1])) {throw std::runtime_error("There is no such figure!");}
-                if (!canvas.allcolors.contains(params[2])) {throw std::runtime_error("There is no such color!");}
-                if (stoi(params[4]) > canvas.getwidth() || stoi(params[5]) > canvas.getheight())  {throw std::runtime_error("Wrong coordinates!");}
-                if (params[1] == "circle") {
-                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for circle!");}
-                    Circle* c = new Circle(canvas.shapes.size() + 1,"circle",params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    canvas.shapes.push_back(c);
-                    cout << "Figure successfully added!" << endl;
-                    //add circle magenta fill 20 10 8 add rectangle red frame 23 16 5 6 add triangle blue fill 10 10 5
-                }
-
-                else if (params[1] == "line") {
-                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for line!");}
-                    Line* l = new Line(canvas.shapes.size() + 1,"line", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    canvas.shapes.push_back(l);
-                    cout << "Figure successfully added!" << endl;
-                }
-                else if (params[1] == "triangle") {
-                    if (params.size() != 7) {throw std::runtime_error("Wrong number of parameters for triangle!");}
-                    Triangle* t = new Triangle(canvas.shapes.size() + 1,"triangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]));
-                    canvas.shapes.push_back(t);
-                    cout << "Figure successfully added!" << endl;
-                }
-                else if (params[1] == "rectangle") {
-                    if (params.size() != 8) {throw std::runtime_error("Wrong number of parameters for rectangle!");}
-                    Rectangle* r = new Rectangle(canvas.shapes.size() + 1, "rectangle", params[2], params[3], stoi(params[4]), stoi(params[5]), stoi(params[6]), stoi(params[7]));
-                    canvas.shapes.push_back(r);
-                    cout << "Figure successfully added!" << endl;
-                }
+                canvas.add(params);
             }
             if (command == "draw") {
                 canvas.draw();
@@ -125,6 +89,6 @@ void Program::run() {
         }
     }
 }
-
+//add circle magenta fill 20 10 8 add rectangle red frame 23 16 5 6 add triangle blue fill 10 10 5
 
 
