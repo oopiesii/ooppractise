@@ -25,6 +25,7 @@ class Shape {
         int getX();
         int getY();
         int getId();
+        void changecolor(string color);
         void move(int newx, int newy);
         string getName();
         string getFillMode();

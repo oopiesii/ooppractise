@@ -161,3 +161,7 @@ void Canvas::move(int x, int y) {
     shapes[selected]->move(x, y);
     cout << "Shape was moved!" << endl;
 }
+void Canvas::color(string color) {
+    shapes[selected]->changecolor(color);
+    cout << "Shape was colored!" << endl;
+}

@@ -31,3 +31,6 @@ void Shape::move(int newx, int newy) {
     x_ = newx;
     y_ = newy;
 }
+void Shape::changecolor(string color) {
+    color_ = color;
+}

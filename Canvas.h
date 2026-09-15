@@ -33,6 +33,7 @@ public:
     std::vector<Shape*> shapes;
     int selected = -1;
     void move(int x, int y);
+    void color(std::string color);
 private:
     const int width = 120;
     const int height = 30;
