@@ -27,3 +27,7 @@ int Shape::getId() {
 string Shape::getName() {
     return name;
 }
+void Shape::move(int newx, int newy) {
+    x_ = newx;
+    y_ = newy;
+}

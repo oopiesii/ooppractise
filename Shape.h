@@ -25,6 +25,7 @@ class Shape {
         int getX();
         int getY();
         int getId();
+        void move(int newx, int newy);
         string getName();
         string getFillMode();
     protected:

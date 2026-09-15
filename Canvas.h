@@ -13,7 +13,6 @@ class Canvas {
 public:
     Canvas();
     std::vector<std::vector<char>> canvas;
-    // std::vector<std::pair<std::string, std::string>> allfiguresoncanvas;
     std::vector<std::vector<std::string>> colors;
     std::set<std::string> allcolors = {"red", "blue", "green", "yellow", "magenta", "cyan", "white"};
     std::set<std::string> allfigures = {"circle", "line", "triangle", "rectangle"};
@@ -33,6 +32,7 @@ public:
     void remove(int selectedid);
     std::vector<Shape*> shapes;
     int selected = -1;
+    void move(int x, int y);
 private:
     const int width = 120;
     const int height = 30;

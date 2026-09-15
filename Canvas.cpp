@@ -157,3 +157,6 @@ void Canvas::remove(int selectedid) {
     selected = -1;
     cout << "Shape was removed!" << endl;
 }
+void Canvas::move(int x, int y) {
+    shapes[selected]->move(x, y);
+}
