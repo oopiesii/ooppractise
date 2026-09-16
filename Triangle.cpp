@@ -1,4 +1,6 @@
 #include "Triangle.h"
+#include <fstream>
+
 Triangle::Triangle(int id, const string& name, const string& color, const string& fillmode, int x, int y, int height):Shape(id, name,color, fillmode, x, y), height(height) {}
 void Triangle::draw(Canvas& canva) {
     for (int i = 0; i < height + 1; i++) {
@@ -20,4 +22,7 @@ int Triangle::getHeight() {
 }
 void Triangle::edit(int a, int b) {
     height = a;
+}
+void Triangle::save(ofstream& filename) const {
+    filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << height << endl;
 }

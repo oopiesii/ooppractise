@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Shape.h"
+#include <fstream>
 
 Shape::Shape(int id, const string& name, const string& color, const string& fillmode, int x, int y):
     id(id), name(name), color_(color), fillmode_(fillmode), x_(x), y_(y){}

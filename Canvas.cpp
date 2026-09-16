@@ -80,14 +80,7 @@ void Canvas::save(const std::string& filename) {
         return;
     }
     for (auto& shape: shapes) {
-        if (shape->getName() == "circle")
-            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getRadius() << endl;}
-        if (shape->getName() == "line")
-            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getLength() << endl;}
-        if (shape->getName() == "triangle")
-            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getHeight() << endl;}
-        if (shape->getName() == "rectangle")
-            {file << shape->getId() << " " << shape->getName() << " " << shape->getColor() << " " << shape->getFillMode() << " " << shape->getX()<< " " << shape->getY() << " " << shape->getWidth() << " " << shape->getHeight() << endl;}
+    shape->save(file);
     }
     cout << "All saved!" << endl;
 }

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include "Canvas.h"
+#include <fstream>
+
 using namespace std;
 class Canvas;
 class Shape {
@@ -16,6 +18,7 @@ class Shape {
         virtual int getWidth() = 0;
         virtual int getLength() = 0;
         virtual int getRadius() = 0;
+        virtual void save(ofstream& filename) const = 0;
         string getColor();
         int getX();
         int getY();

@@ -1,6 +1,8 @@
 #include <cmath>
 #include "Circle.h"
 #include "Canvas.h"
+#include <fstream>
+
 Circle::Circle(int id, const string& name, const string& color, const string& fillmode, int centerx, int centery, int radius):Shape(id, name, color, fillmode, centerx, centery), radius(radius) {}
 void Circle::draw(Canvas& canva) {
     for (int i = -radius; i < radius; i++) {
@@ -30,4 +32,7 @@ int Circle::getRadius() {
 }
 void Circle::edit(int a, int b) {
     radius = a;
+}
+void Circle::save(ofstream& filename) const {
+    filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << radius << endl;
 }

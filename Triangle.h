@@ -1,6 +1,7 @@
 #ifndef ASSIGNMENT1_TRIANGLE_H
 #define ASSIGNMENT1_TRIANGLE_H
 #include "Shape.h"
+#include <fstream>
 
 class Triangle : public Shape {
 public:
@@ -12,6 +13,7 @@ public:
     int getWidth() override {return 0;};
     int getLength() override {return 0;};
     int getRadius() override {return 0;};
+    void save(ofstream& filename) const override;
 private:
     int height;
 };

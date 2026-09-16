@@ -3,6 +3,8 @@
 #include <__fwd/string.h>
 #include "Shape.h"
 #include<string>
+#include <fstream>
+
 class Canvas;
 class Rectangle : public Shape{
     public:
@@ -14,6 +16,7 @@ class Rectangle : public Shape{
         int getHeight() override;
         int getLength() override {return 0;};
         int getRadius() override {return 0;};
+        void save(ofstream& filename) const override;
     private:
         int width;
         int height;

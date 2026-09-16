@@ -1,5 +1,7 @@
 #include "Canvas.h"
 #include "Rectangle.h"
+#include <fstream>
+
 Rectangle::Rectangle(int id, const string& name, const string& color, const string& fillmode, int x, int y, int width, int height):Shape(id, name, color, fillmode, x, y), width(width), height(height) {}
 void Rectangle::draw(Canvas& canvas)
 {
@@ -31,4 +33,7 @@ int Rectangle::getWidth() {
 void Rectangle::edit(int a, int b) {
     width = a;
     height = b;
+}
+void Rectangle::save(ofstream& filename) const {
+    filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << width << " " << height << endl;
 }

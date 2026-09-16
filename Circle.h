@@ -1,6 +1,7 @@
 #ifndef ASSIGNMENT1_CIRCLE_H
 #define ASSIGNMENT1_CIRCLE_H
 #include "Shape.h"
+#include <fstream>
 
 class Circle : public Shape {
 public:
@@ -12,6 +13,7 @@ public:
     int getHeight() override {return 0;};
     int getWidth() override {return 0;};
     int getLength() override {return 0;};
+    void save(ofstream& filename) const override;
 private:
     int radius;
 };
