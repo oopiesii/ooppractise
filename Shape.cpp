@@ -2,7 +2,7 @@
 #include <string>
 #include "Shape.h"
 
-Shape::Shape(int id, string name, string color, string fillmode, int x, int y):
+Shape::Shape(int id, const string& name, const string& color, const string& fillmode, int x, int y):
     id(id), name(name), color_(color), fillmode_(fillmode), x_(x), y_(y){}
 
 string Shape::getColor()
@@ -31,6 +31,6 @@ void Shape::move(int newx, int newy) {
     x_ = newx;
     y_ = newy;
 }
-void Shape::changecolor(string color) {
+void Shape::changecolor(const string& color) {
     color_ = color;
 }

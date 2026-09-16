@@ -3,7 +3,7 @@
 #include "Line.h"
 using namespace std;
 #include <string>
-Line::Line(int id, string name, string color, string fillmode, int x, int y, int length):Shape(id, name, color, fillmode, x, y), length(length) {}
+Line::Line(int id, const string& name, const string& color, const string& fillmode, int x, int y, int length):Shape(id, name, color, fillmode, x, y), length(length) {}
 void Line::draw(Canvas& canva)
 {
     if (fillmode_ == "fill" || fillmode_ == "frame")

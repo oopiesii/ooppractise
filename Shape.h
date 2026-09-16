@@ -7,7 +7,7 @@ using namespace std;
 class Canvas;
 class Shape {
     public:
-        Shape(int id, string name, string color, string fillmode, int x, int y);
+        Shape(int id, const string& name, const string& color, const string& fillmode, int x, int y);
         virtual ~Shape() = default;
         virtual void draw(Canvas& canva) = 0;
         virtual bool contains(int x,int y) = 0;
@@ -19,7 +19,7 @@ class Shape {
         int getX();
         int getY();
         int getId();
-        void changecolor(string color);
+        void changecolor(const string& colo);
         void move(int newx, int newy);
         string getName();
         string getFillMode();

@@ -1,5 +1,5 @@
 #include "Triangle.h"
-Triangle::Triangle(int id, string name, string color, string fillmode, int x, int y, int height):Shape(id, name,color, fillmode, x, y), height(height) {}
+Triangle::Triangle(int id, const string& name, const string& color, const string& fillmode, int x, int y, int height):Shape(id, name,color, fillmode, x, y), height(height) {}
 void Triangle::draw(Canvas& canva) {
     for (int i = 0; i < height + 1; i++) {
         for (int j = -i; j <= i; j++) {

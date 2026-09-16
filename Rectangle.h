@@ -6,7 +6,7 @@
 class Canvas;
 class Rectangle : public Shape{
     public:
-        Rectangle(int id, string name, string color, string fillmode, int x, int y, int width, int height);
+        Rectangle(int id, const string& name, const string& color, const string& fillmode, int x, int y, int width, int height);
         void draw(Canvas& canvas) override;
         bool contains(int x,int y) override;
         int getWidth() override;

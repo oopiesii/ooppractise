@@ -7,15 +7,20 @@
 #include "Triangle.h"
 using namespace std;
 #include "Canvas.h"
-Canvas::Canvas() : width(120), height(30) {}
-std::string Canvas::getcolor(std::string colour) {
+Canvas::Canvas() = default;
+Canvas::~Canvas() {
+    for (auto& shape : shapes) {
+        delete shape;
+    }
+}
+std::string Canvas::getcolor(const std::string& colour) {
     if (colour == "red") return "\033[31m";
-    else if (colour == "blue") return "\033[34m";
-    else if (colour == "green") return "\033[32m";
-    else if (colour == "yellow") return "\033[33m";
-    else if (colour == "magenta") return "\033[35m";
-    else if (colour == "cyan") return "\033[36m";
-    else if (colour == "white") return "\033[37m";
+    if (colour == "blue") return "\033[34m";
+    if (colour == "green") return "\033[32m";
+    if (colour == "yellow") return "\033[33m";
+    if (colour == "magenta") return "\033[35m";
+    if (colour == "cyan") return "\033[36m";
+    if (colour == "white") return "\033[37m";
     return "\033[0m";
 }
 void Canvas::setbycoo(int x, int y, char C, std::string colour) {
@@ -55,16 +60,20 @@ void Canvas::list() {
     for (int i = 0; i < shapes.size(); i++)
         cout << i + 1 << ". "<< shapes[i]->getColor() << " " << shapes[i]->getName() << endl;
 }
-void Canvas::clear(Canvas canva) {
-    for (int i = 0; i < canva.getwidth(); i++) {
-        for (int j = 0; j < canva.getheight(); j++) {
+void Canvas::clear() {
+    for (int i = 0; i < getwidth(); i++) {
+        for (int j = 0; j < getheight(); j++) {
             canvas[i][j] = ' ';
             colors[i][j] = "";
         }
     }
-    vector<Shape*>().swap(shapes);
+    for (auto& shape : shapes) {
+        delete shape;
+    }
+    shapes.clear();
+    selected = -1;
 }
-void Canvas::save(std::string filename) {
+void Canvas::save(const std::string& filename) {
     ofstream file(filename);
     if (!file.is_open()) {
         cout << "Cannot be opened!" << endl;
@@ -82,7 +91,7 @@ void Canvas::save(std::string filename) {
     }
     cout << "All saved!" << endl;
 }
-void Canvas::load(std::string filename) {
+void Canvas::load(const std::string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
         cout << "Cannot be opened!" << endl;
@@ -156,11 +165,11 @@ void Canvas::move(int x, int y) {
     shapes[selected]->move(x, y);
     cout << "Shape was moved!" << endl;
 }
-void Canvas::color(string color) {
+void Canvas::color(const string& color) {
     shapes[selected]->changecolor(color);
     cout << "Shape was colored!" << endl;
 }
-void Canvas::add(vector<string> params) {
+void Canvas::add(const vector<string>& params) {
                 if (!allfigures.contains(params[1])) {throw std::runtime_error("There is no such figure!");}
                 if (!allcolors.contains(params[2])) {throw std::runtime_error("There is no such color!");}
                 if (stoi(params[4]) > getwidth() || stoi(params[5]) > getheight())  {throw std::runtime_error("Wrong coordinates!");}

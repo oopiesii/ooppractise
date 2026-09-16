@@ -39,7 +39,7 @@ void Program::run() {
             }
             if (command == "colors") {
                 int i = 1;
-                for (string color: canvas.allcolors) {
+                for (const string& color: canvas.allcolors) {
                     cout << i << ". " << color << endl;
                     i++;
                 }
@@ -52,7 +52,7 @@ void Program::run() {
                 }
             }
             if (command == "clear") {
-                canvas.clear(canvas);
+                canvas.clear();
                 cout << "Canva is clean!" << endl;
             }
             if (command == "save") {
