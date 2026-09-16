@@ -12,11 +12,11 @@ Program::Program() : canvas() {}
 void Program::run() {
     string input;
     std::string command;
-    std::set<std::string> commands = {"add", "draw", "list", "colors", "figures", "exit", "clear","remove", "save", "load", "select", "move", "paint"};
+    std::set<std::string> commands = {"add", "draw", "list", "colors", "figures", "exit", "clear","remove", "save", "load", "select", "move", "paint", "edit"};
     cout << "Hi! Welcome to the BLACKBOARD by Polina Stupak!" << endl;
     cout << "Board size is: " << canvas.getwidth() << "X" << canvas.getheight() << endl;
     cout << "If you want to know all available figures print: figures, or colors print: colors. " << endl;
-    cout << "Commands are 1. add, 2. draw, 3. list, 4. colors, 5. figures, 6. exit, 7. clear, 8. save, 9. load, 10. remove, 11. select, 12. move, 13. paint" << endl;
+    cout << "Commands are 1. add, 2. draw, 3. list, 4. colors, 5. figures, 6. exit, 7. clear, 8. save, 9. load, 10. remove, 11. select, 12. move, 13. paint, 14.edit" << endl;
     cout << "Print what you want to illustrate(in sequence of command, figure, color, fill mode, coordinates and size)!" << endl;
     cout << "~Fill modes are frame and fill." << endl;
     while (command != "exit") {
@@ -82,6 +82,9 @@ void Program::run() {
             }
             if (command == "paint") {
                 canvas.color(params[1]);
+            }
+            if (command == "edit") {
+                canvas.edit(params);
             }
         }
         catch (std::exception &e) {

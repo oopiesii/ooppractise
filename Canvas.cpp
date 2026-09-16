@@ -199,3 +199,21 @@ void Canvas::add(const vector<string>& params) {
                     cout << "Figure successfully added!" << endl;
                 }
 }
+void Canvas::edit(const vector<string>& params) {
+    if (shapes[selected]->getName() == "circle") {
+        shapes[selected] -> edit(stoi(params[1]));
+        cout << "Shape was edited!" << endl;
+    }
+    if (shapes[selected]->getName() == "triangle") {
+        shapes[selected] -> edit(stoi(params[1]));
+        cout << "Shape was edited!" << endl;
+    }
+    if (shapes[selected]->getName() == "line") {
+        shapes[selected] -> edit(stoi(params[1]));
+        cout << "Shape was edited!" << endl;
+    }
+    if (shapes[selected]->getName() == "rectangle") {
+        shapes[selected] -> edit(stoi(params[1]), stoi(params[2]));
+        cout << "Shape was edited!" << endl;
+    }
+}

@@ -19,3 +19,6 @@ bool Line::contains(int x, int y) {
 int Line::getLength() {
     return length;
 }
+void Line::edit(int a, int b) {
+    length = a;
+}

@@ -28,3 +28,7 @@ int Rectangle::getHeight() {
 int Rectangle::getWidth() {
     return width;
 }
+void Rectangle::edit(int a, int b) {
+    width = a;
+    height = b;
+}

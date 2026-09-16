@@ -28,3 +28,6 @@ bool Circle::contains(int x, int y) {
 int Circle::getRadius() {
     return radius;
 }
+void Circle::edit(int a, int b) {
+    radius = a;
+}

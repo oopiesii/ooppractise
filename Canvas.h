@@ -30,6 +30,7 @@ public:
     void move(int x, int y);
     void color(const std::string& color);
     void add(const std::vector<std::string>& params);
+    void edit(const std::vector<std::string>& params);
 private:
     const int width = 120;
     const int height = 30;

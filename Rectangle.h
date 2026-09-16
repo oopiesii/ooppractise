@@ -10,6 +10,7 @@ class Rectangle : public Shape{
         void draw(Canvas& canvas) override;
         bool contains(int x,int y) override;
         int getWidth() override;
+        void edit(int a = 0, int b = 0) override;
         int getHeight() override;
         int getLength() override {return 0;};
         int getRadius() override {return 0;};

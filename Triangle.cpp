@@ -18,3 +18,6 @@ bool Triangle::contains(int x, int y) {
 int Triangle::getHeight() {
     return height;
 }
+void Triangle::edit(int a, int b) {
+    height = a;
+}
