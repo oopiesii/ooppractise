@@ -14,10 +14,6 @@ class Shape {
         virtual void draw(Canvas& canva) = 0;
         virtual void edit(int a = 0, int b = 0) = 0;
         virtual bool contains(int x,int y) = 0;
-        virtual int getHeight() = 0;
-        virtual int getWidth() = 0;
-        virtual int getLength() = 0;
-        virtual int getRadius() = 0;
         virtual void save(ofstream& filename) const = 0;
         string getColor();
         int getX();

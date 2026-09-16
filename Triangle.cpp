@@ -17,9 +17,6 @@ bool Triangle::contains(int x, int y) {
     if (i < 0 || i > height) {return false;}
     return x >= x_ - i && x <= x_ + i; // if row is true if point in limits of triangle
 }
-int Triangle::getHeight() {
-    return height;
-}
 void Triangle::edit(int a, int b) {
     height = a;
 }

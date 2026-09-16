@@ -24,12 +24,7 @@ void Rectangle::draw(Canvas& canvas)
 bool Rectangle::contains(int x, int y) {
     return x >= x_ && x <= x_ + width && y >= y_ && y <= y_ + height;
 }
-int Rectangle::getHeight() {
-    return height;
-}
-int Rectangle::getWidth() {
-    return width;
-}
+
 void Rectangle::edit(int a, int b) {
     width = a;
     height = b;
