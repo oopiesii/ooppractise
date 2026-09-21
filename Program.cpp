@@ -57,6 +57,7 @@ void Program::run() {
             }
             if (command == "save") {
                 canvas.save(params[1]);
+                canvas.clear();
             }
             if (command == "load") {
                 canvas.load(params[1]);
@@ -92,6 +93,6 @@ void Program::run() {
         }
     }
 }
-//add circle magenta fill 20 10 8 add rectangle red frame 23 16 5 6 add triangle blue fill 10 10 5 add line cyan frame 65 15 6
+//add circle magenta fill 20 10 8 add rectangle red frame 23 16 5 6  add triangle blue fill 10 10 5 add line cyan frame 65 15 6
 
 

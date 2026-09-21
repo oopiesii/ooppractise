@@ -96,21 +96,42 @@ void Canvas::load(const std::string& filename) {
         int id, x, y;
         string name, color, fillmode;
         l >> id >> name >> color >> fillmode >> x >> y;
+        if (l.fail()) {
+            cout << "Line misses field (expected id, name, color, fillmode, x, y). Skipping." << endl;
+            continue;
+        }
         vector<int> pars;
         int i;
         while (l >> i) {
             pars.push_back(i);
         }
         if (name == "circle") {
+            if (pars.size() != 1) {
+                cout << "Circle must have only one integer parameter! Skipping." << endl;
+                continue;
+            }
             shapes.push_back(new Circle(id, name, color, fillmode, x, y, pars[0]));
         }
         if (name == "line") {
+            if (pars.size() != 1) {
+                cout << "Line must have only one integer parameter! Skipping." << endl;
+                continue;
+            }
             shapes.push_back(new Line(id, name, color, fillmode, x, y, pars[0]));
         }
         if (name == "triangle") {
+            if (pars.size() != 1) {
+                cout << "Triangle must have only one integer parameter! Skipping." << endl;
+                continue;
+            }
             shapes.push_back(new Triangle(id, name, color, fillmode, x, y, pars[0]));
         }
         if (name == "rectangle") {
+
+            if (pars.size() != 2) {
+                cout << "Rectangle must have two integer parameters! Skipping." << endl;
+                continue;
+            }
             shapes.push_back(new Rectangle(id, name, color, fillmode, x, y, pars[0], pars[1]));
         }
     }
@@ -155,8 +176,16 @@ void Canvas::remove(int selectedid) {
     cout << "Shape was removed!" << endl;
 }
 void Canvas::move(int x, int y) {
-    shapes[selected]->move(x, y);
-    cout << "Shape was moved!" << endl;
+    if (selected == -1) {
+        cout << "No figure selected!" << endl;
+    }
+    else
+    {
+        shapes[selected]->move(x, y);
+        std::swap(shapes[selected], shapes[shapes.size() - 1]);
+        selected = -1;
+        cout << "Shape was moved!" << endl;
+    }
 }
 void Canvas::color(const string& color) {
     shapes[selected]->changecolor(color);
