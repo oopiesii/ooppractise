@@ -7,7 +7,10 @@
 #include "Triangle.h"
 using namespace std;
 #include "Canvas.h"
-Canvas::Canvas() = default;
+Canvas::Canvas() {
+    canvas.resize(width, vector<char>(height, ' '));
+    colors.resize(width, vector<string>(height, ""));
+}
 Canvas::~Canvas() {
     for (auto& shape : shapes) {
         delete shape;
@@ -61,17 +64,22 @@ void Canvas::list() {
         cout << i + 1 << ". "<< shapes[i]->getColor() << " " << shapes[i]->getName() << endl;
 }
 void Canvas::clear() {
-    for (int i = 0; i < getwidth(); i++) {
-        for (int j = 0; j < getheight(); j++) {
-            canvas[i][j] = ' ';
-            colors[i][j] = "";
+    if (shapes.size() > 0) {
+        for (int i = 0; i < getheight(); i++) {
+            for (int j = 0; j < getwidth(); j++) {
+                canvas[i][j] = ' ';
+                colors[i][j] = "";
+            }
         }
+        for (auto& shape : shapes) {
+            delete shape;
+        }
+        shapes.clear();
+        selected = -1;
+        cout << "The canva is clear!" << endl;
+    } else {
+        cout << "The canva is clear!" << endl;
     }
-    for (auto& shape : shapes) {
-        delete shape;
-    }
-    shapes.clear();
-    selected = -1;
 }
 void Canvas::save(const std::string& filename) {
     ofstream file(filename);
@@ -188,8 +196,14 @@ void Canvas::move(int x, int y) {
     }
 }
 void Canvas::color(const string& color) {
-    shapes[selected]->changecolor(color);
-    cout << "Shape was colored!" << endl;
+    if (selected == -1) {
+        cout << "No figure selected!" << endl;
+    }
+    else
+    {
+        shapes[selected]->changecolor(color);
+        cout << "Shape was colored!" << endl;
+    }
 }
 void Canvas::add(const vector<string>& params) {
                 if (!allfigures.contains(params[1])) {throw std::runtime_error("There is no such figure!");}
@@ -222,20 +236,26 @@ void Canvas::add(const vector<string>& params) {
                 }
 }
 void Canvas::edit(const vector<string>& params) {
-    if (shapes[selected]->getName() == "circle") {
-        shapes[selected] -> edit(stoi(params[1]));
-        cout << "Shape was edited!" << endl;
+    if (selected == -1) {
+        cout << "No figure selected!" << endl;
     }
-    if (shapes[selected]->getName() == "triangle") {
-        shapes[selected] -> edit(stoi(params[1]));
-        cout << "Shape was edited!" << endl;
-    }
-    if (shapes[selected]->getName() == "line") {
-        shapes[selected] -> edit(stoi(params[1]));
-        cout << "Shape was edited!" << endl;
-    }
-    if (shapes[selected]->getName() == "rectangle") {
-        shapes[selected] -> edit(stoi(params[1]), stoi(params[2]));
-        cout << "Shape was edited!" << endl;
+    else
+    {
+        if (shapes[selected]->getName() == "circle") {
+            shapes[selected] -> edit(stoi(params[1]));
+            cout << "Shape was edited!" << endl;
+        }
+        if (shapes[selected]->getName() == "triangle") {
+            shapes[selected] -> edit(stoi(params[1]));
+            cout << "Shape was edited!" << endl;
+        }
+        if (shapes[selected]->getName() == "line") {
+            shapes[selected] -> edit(stoi(params[1]));
+            cout << "Shape was edited!" << endl;
+        }
+        if (shapes[selected]->getName() == "rectangle") {
+            shapes[selected] -> edit(stoi(params[1]), stoi(params[2]));
+            cout << "Shape was edited!" << endl;
+        }
     }
 }

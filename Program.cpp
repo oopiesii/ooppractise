@@ -53,7 +53,6 @@ void Program::run() {
             }
             if (command == "clear") {
                 canvas.clear();
-                cout << "Canva is clean!" << endl;
             }
             if (command == "save") {
                 canvas.save(params[1]);

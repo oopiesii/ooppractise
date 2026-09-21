@@ -29,6 +29,6 @@ void Rectangle::edit(int a, int b) {
     width = a;
     height = b;
 }
-void Rectangle::save(ofstream& filename) const {
+void Rectangle::save(ofstream& filename)  {
     filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << width << " " << height << endl;
 }

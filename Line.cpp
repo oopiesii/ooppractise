@@ -22,6 +22,6 @@ bool Line::contains(int x, int y) {
 void Line::edit(int a, int b) {
     length = a;
 }
-void Line::save(ofstream& filename) const {
+void Line::save(ofstream& filename)  {
     filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << length << endl;
 }

@@ -30,6 +30,6 @@ bool Circle::contains(int x, int y) {
 void Circle::edit(int a, int b) {
     radius = a;
 }
-void Circle::save(ofstream& filename) const {
+void Circle::save(ofstream& filename)  {
     filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << radius << endl;
 }

@@ -7,7 +7,7 @@ class Line : public Shape{
     void draw(Canvas& canva) override;
     bool contains(int x,int y) override;
     void edit(int a = 0, int b = 0) override;
-    void save(ofstream& filename) const override;
+    void save(ofstream& filename)  override;
 private:
     int length;
 };

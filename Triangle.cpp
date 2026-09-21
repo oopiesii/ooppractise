@@ -20,6 +20,6 @@ bool Triangle::contains(int x, int y) {
 void Triangle::edit(int a, int b) {
     height = a;
 }
-void Triangle::save(ofstream& filename) const {
+void Triangle::save(ofstream& filename) {
     filename << id << " " << name << " " << color_ << " " << fillmode_ << " " << x_ << " " << y_ << " " << height << endl;
 }

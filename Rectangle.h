@@ -12,7 +12,7 @@ class Rectangle : public Shape{
         void draw(Canvas& canvas) override;
         bool contains(int x,int y) override;
         void edit(int a = 0, int b = 0) override;
-        void save(ofstream& filename) const override;
+        void save(ofstream& filename) override;
     private:
         int width;
         int height;
